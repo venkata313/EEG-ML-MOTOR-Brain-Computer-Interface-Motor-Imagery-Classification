@@ -1,0 +1,37 @@
+# BCI Motor Imagery EEG Classification
+
+## Project Overview
+- **Objective**: Classify EEG signals for different motor imagery tasks without using hardware.
+- **Dataset**: Utilizes the BCI Competition IV Dataset 2a, available in `.mat` format from Kaggle.
+
+## Project Structure
+- **Data**:
+  - `data/raw/`: Contains raw Kaggle `.mat` files.
+  - `data/processed/`: Contains cleaned epochs and features.
+- **Artifacts**:
+  - `artifacts/`: Stores saved models, CSP (Common Spatial Patterns), and scalers.
+- **Reports**:
+  - `reports/`: Includes metrics and confusion matrices.
+- **Notebooks**:
+  - `notebooks/`: Contains all machine learning work.
+- **Source Code**:
+  - `src/`: Contains the Streamlit app and related scripts.
+
+## Algorithms and Methods
+- **Signal Processing**:
+  - Bandpass filtering using butter_bandpass to isolate relevant frequency bands (8-30 Hz).
+  - Feature extraction using bandpower for mu (8-12 Hz) and beta (13-30 Hz) bands.
+- **Machine Learning**:
+  - CSP for feature transformation.
+  - Classification model loaded from artifacts.
+  - Stability gate mechanism to ensure reliable command generation.
+
+## Main Components
+- **Inference**:
+  - Handles loading of EEG data, application of CSP, and prediction using a pre-trained model.
+  - Implements a sliding-window simulation to generate predictions and stable commands.
+- **Simulation**:
+  - Uses a stability gate to filter predictions based on confidence and consistency.
+
+## Main Goal
+The main goal of the project is to accurately classify motor imagery tasks from EEG data, enabling real-time interaction through a Streamlit application.
